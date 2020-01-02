@@ -1,0 +1,24 @@
+header{
+ background-color: #03a9f4;
+ color: white;
+}
+a{
+ text-decoration: none;
+ color: white;
+ font-size: 22px;
+ padding: 25px;
+ display: inline-block;
+}
+a:hover, a:focus{
+ background-color: blue;
+}
+.headerText{
+ font-size: 30px;
+ padding: 10px;
+ display: inline-block;
+ margin: 0;
+}
+span{
+ display: inline-block;
+
+}

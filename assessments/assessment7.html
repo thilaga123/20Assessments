@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>assignment 7 </title>
+  <style>
+    #table,
+    tr,
+    td {
+      border: 1px solid black;
+    }
+
+    th {
+      border: 1px solid black;
+      background-color: gray;
+    }
+  </style>
+  <script>
+    var colorCount = 0;
+    var bgColorCount = 0;
+    //    1.
+    // Here is a sample html file with a submit button. Now modify the style of 
+    // the paragraph text through javascript code.
+    // Clicking on the button the font, font size, and color of the paragraph text 
+    // will be changed.
+    function changeColor() {
+      if (colorCount == 0) {
+        document.getElementById('colorChange').style.color = 'red';
+        colorCount = 1;
+      }
+      else {
+        document.getElementById('colorChange').style.color = 'black';
+        colorCount = 0;
+      }
+    }
+    // 2.Write a JavaScript function to get the values of First and Last name of 
+    // the following form.
+    function getFormValues() {
+      document.getElementById('showFname').innerHTML = document.forms["myForm"]['fname'].value;
+      document.getElementById('showLname').innerHTML = document.forms["myForm"]['lname'].value;
+    }
+
+    // 3. Write a JavaScript program to set the background color of a paragraph.
+
+    function ChangeBGColor() {
+      if (bgColorCount == 0) {
+        document.getElementById('bgColorPTag').style.backgroundColor = 'yellow';
+        bgColorCount = 1;
+      }
+      else {
+        document.getElementById('bgColorPTag').style.backgroundColor = 'grey';
+        bgColorCount = 0;
+      }
+    }
+
+    //4. get the value of the href, hreflang, rel, target, and type attributes of the specified link.
+
+    function getAttributes() {
+      var pTag = document.getElementById('displayValue');
+      var u = document.getElementById("webLink").href;
+      pTag.innerHTML = pTag.innerHTML + '<div>The value of the href attribute of the link is : ' + u;
+      var v = document.getElementById("webLink").hreflang;
+      pTag.innerHTML = pTag.innerHTML + '</div><div>The value of the hreflang attribute of the link is : ' + v;
+
+      var w = document.getElementById("webLink").rel;
+      pTag.innerHTML = pTag.innerHTML + '</div><div>The value of the rel attribute of the link is : ' + w;
+
+      var x = document.getElementById("webLink").target;
+      pTag.innerHTML = pTag.innerHTML + '</div><div>The value of the taget attribute of the link is : ' + x;
+
+      var y = document.getElementById("webLink").type;
+      pTag.innerHTML = pTag.innerHTML + '</div><div>The value of the type attribute of the link is : ' + y + '</div>';
+
+    }
+    //5 append row.
+
+    function addRow() {
+
+      document.getElementById('table').innerHTML = document.getElementById('table').innerHTML + " <tr><td>added data</td><td>added data</td></tr>";
+    }
+    //6 change cell value.
+    function changeContent() {
+      var tableForm = document.forms['tableForm'];
+      if (tableForm['row'] && tableForm['column'] && tableForm['text']) {
+        row = tableForm['row'].value;
+        col = tableForm['column'].value;
+        content = tableForm['text'].value;
+        var x = document.getElementById('myTable').rows[parseInt(row, 10)].cells;
+        x[parseInt(col, 10)].innerHTML = content;
+      }
+    }
+
+
+    //7 create table .
+    function createTable() {
+      var row = document.forms['GtableForm']['row'].value;
+      var col = document.forms['GtableForm']['column'].value;
+
+      if (row && col) {
+        var table = document.createElement('table')
+        for (var r = 0; r < parseInt(row, 10); r++) {
+          var x = table.insertRow(r);
+          for (var c = 0; c < parseInt(col, 10); c++) {
+            var y = x.insertCell(c);
+            y.innerHTML = "Row-" + r + " Column-" + c;
+          }
+        }
+        document.getElementById('createTable').appendChild(table);
+      }
+    }
+
+
+    //8 remove selected :
+    function removeselected() {
+      var x = document.getElementById("colorSelect");
+      x.remove(x.selectedIndex);
+    }
+  </script>
+</head>
+
+<body>
+  <div class="container">
+
+
+    <h2>1: change color of the below text </h2>
+    <p id="colorChange">"color changed"</p>
+    <button onclick="changeColor()">click here to change the color</button>
+  </div>
+
+
+
+  <h2>2: Get First and Last Name from the below form</h2>
+  <form name="myForm" onsubmit="event.preventDefault()">
+    <p>
+      <input name="fname" type="text" placeholder="Enter First Name">
+    </p>
+    <p>
+      <input name="lname" type="text" placeholder="Enter Last Name">
+    </p>
+    <button onclick="getFormValues()"> Click here fetch First name and last name</button>
+  </form>
+  <p>
+    <label>First name: </label>
+    <span id="showFname"></span>
+  </p>
+  <p>
+    <label>Last name: </label>
+    <span id="showLname"></span>
+  </p>
+
+
+  <h2>3. Write a JavaScript program to set the background color of a paragraph.</h2>
+  <pre>
+   <p id="bgColorPTag">
+  Here is the P tag 
+  on-click of the below button 
+  the background color of this paragraph will be changed.
+ </p>
+</pre>
+  <input type="button" value="Click Here" onclick="ChangeBGColor();" />
+
+  <h2>4: get the value of the href, hreflang, rel, target, and type attributes of the specified link.</h2>
+
+  <p><a id="webLink" type="text/html" hreflang="en-us" rel="googleRel" target="_self" href="https://www.google.com/">google</a></p>
+  <button onclick="getAttributes()">Click here to get the attribute's value</button>
+  <p id="displayValue">
+
+  </p>
+
+
+  <h2>5.Write a JavaScript function to add rows to a table.</h2>
+  <button onclick="addRow()">addRow</button>
+
+  <table id="table">
+    <tr>
+      <th>col1</th>
+      <th>col2</th>
+    </tr>
+    <tr>
+      <td>data1</td>
+      <td>data2</td>
+    </tr>
+  </table>
+
+
+  <h2>6:Write a JavaScript function that accept row, column and a string to update the content of that cell.</h2>
+  <form name="tableForm" onsubmit="event.preventDefault()">
+    <div>
+      ROW:<input type="number" name='row' placeholder="Enter row (0,1,2)"> COLUMN:
+      <input type="number" name='column' placeholder="Enter column (0,1)"> TEXT:
+      <input type="text" name='text' placeholder="enter any value">
+    </div>
+    <br>
+    <input type="button" onclick="changeContent()" value="Change content"> <br>
+
+  </form>
+  <table id="myTable">
+    <tr>
+      <td>Row1 cell1</td>
+      <td>Row1 cell2</td>
+    </tr>
+    <tr>
+      <td>Row2 cell1</td>
+      <td>Row2 cell2</td>
+    </tr>
+    <tr>
+      <td>Row3 cell1</td>
+      <td>Row3 cell2</td>
+    </tr>
+  </table>
+
+  <h2>7: create Table</h2>
+  <form name="GtableForm" onsubmit="event.preventDefault()">
+    <div>
+      ROW:<input type="number" name='row' placeholder="Enter row (eg:1,2,3)"> COLUMN:
+      <input type="number" name='column' placeholder="Enter column (eg:1,2,3)">
+    </div>
+    <br>
+    <input type="button" onclick="createTable()" value="generate Table"> <br>
+
+  </form>
+  <div id="createTable"></div>
+  <h2>8: Remove a element from drop down</h2>
+  <select id="colorSelect">
+    <option>orange</option>
+    <option>apple</option>
+    <option>grapes</option>
+    <option>strawberry</option>
+    <option>pomo</option>
+  </select>
+  <input type="button" onclick="removeselected()" value="Remove selected item">
+</body>
+
+</html>

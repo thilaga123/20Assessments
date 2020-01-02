@@ -1,0 +1,15 @@
+.paragraph{
+ color:red;
+ background-color: yellow;
+}
+.align-center{
+ text-align: center;
+}
+.align-content-center{
+ margin: 0 auto;
+ width:75%;
+}
+a{
+ text-decoration: none;
+ cursor: pointer;
+}

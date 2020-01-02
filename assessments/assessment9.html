@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Bootstrap Example</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <style>
+      .signupForm {
+        width: 400px;
+        margin: 0 auto;
+      }
+      .formContainer {
+        width: 500px;
+        background-color: #22252a;
+        margin: 0 auto;
+        border-radius: 5px;
+      }
+      body {
+        background-color: #2e3136;
+        color: #abacb1;
+      }
+      .form-control {
+        background-color: #454857;
+        color: #abacb1;
+        border: none;
+      }
+      .header {
+        background-color: #454857;
+        padding: 15px;
+        border-radius: 5px 5px 0px 0px;
+      }
+      .alreadyUser {
+        padding: 20px;
+        padding-bottom: 30px;
+        border-top: 1px dashed #454857;
+      }
+      .alreadyUserLabel {
+        padding: 10px;
+      }
+      .sign-in-button {
+        background-color: #454857;
+      }
+      .colorBlue {
+        color: #23a2d8;
+      }
+      .footer {
+        margin-top: 30px;
+      }
+      /* #2e3136 body
+ contain
+454857 input box heder
+29a1d9 */
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="text-center">
+        Bootstrap 3 Xtra Form
+      </div>
+      <div class="formContainer">
+        <div class="text-center">
+          <h5 class="header">SIGN UP</h5>
+        </div>
+        <form class="signupForm">
+          <div class="form-group">
+            <label for="username" class="form-label required">Username</label>
+            <input
+              class="form-control"
+              formControlName="username"
+              id="username"
+              placeholder="username"
+              type="text"
+            />
+          </div>
+          <div class="form-group">
+            <label for="Email" class="form-label required">Email</label>
+            <input
+              class="form-control"
+              formControlName="Email"
+              id="Email"
+              placeholder="Email"
+              type="email"
+            />
+          </div>
+          <div class="form-group">
+            <label for="password" class="form-label required">Password</label>
+            <input
+              class="form-control"
+              formControlName="password"
+              id="password"
+              placeholder="Password"
+              type="password"
+            />
+          </div>
+          <div class="form-group">
+            <label for="repassword" class="form-label required"
+              >Retype password</label
+            >
+            <input
+              class="form-control"
+              formControlName="repassword"
+              id="repassword"
+              placeholder="Retype password"
+              type="password"
+            />
+          </div>
+          <div class="form-group">
+            <input class="" formControlName="tnc" id="tnc" type="checkbox" />
+            <label for="tnc" class="">Accept the terms and policies</label>
+          </div>
+          <div class="form-group">
+            <button class="btn btn-primary" type="submit">Sign Up</button>
+          </div>
+          <div class="alreadyUser">
+            <div class="text-center alreadyUserLabel">
+              Already have an account?
+            </div>
+            <button class="btn btn-block sign-in-button" type="submit">
+              SIGN IN
+            </button>
+          </div>
+        </form>
+      </div>
+      <div class="text-center footer">
+        <p>
+          Build with <span class="colorBlue">Bootstrap 3</span> | Made by
+          <span class="colorBlue">Thilagavathy</span>
+        </p>
+      </div>
+    </div>
+  </body>
+</html>

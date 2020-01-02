@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>HTML fieldset Tag</title>
+    <style>
+        div {
+            margin: 20px;
+        }
+
+        label {
+            display: block;
+        }
+
+        input {
+            width: 250px;
+        }
+
+        span {
+            color: red;
+        }
+
+        #datediff {
+            color: black;
+        }
+    </style>
+    <script>
+        function validateForm() {
+            console.log(document.forms["form"]["numberField"].value);
+            var numberField = document.forms["form"]["numberField"].value;
+            if (numberField == "") {
+                document.getElementById("numberField").innerHTML = "This feild is required";
+            } else {
+                document.getElementById("numberField").innerHTML = "";
+            }
+            var DateField = document.forms["form"]["DateField"].value;
+            if (DateField == "") {
+                document.getElementById("DateField").innerHTML = "This feild is required";
+            } else {
+                document.getElementById("DateField").innerHTML = "";
+            }
+            var TimeField = document.forms["form"]["TimeField"].value;
+            if (TimeField == "") {
+                document.getElementById("TimeField").innerHTML = "This feild is required";
+            } else {
+                document.getElementById("TimeField").innerHTML = "";
+            }
+            var datetimelocal = document.forms["form"]["datetimelocal"].value;
+            if (datetimelocal == "") {
+                document.getElementById("datetimelocal").innerHTML = "This feild is required";
+            }
+            else {
+                document.getElementById("datetimelocal").innerHTML = "";
+            }
+            var datetime = document.forms["form"]["datetime"].value;
+            if (datetime == "") {
+                document.getElementById("datetime").innerHTML = "This feild is required";
+            } else if (new Date(datetime) == 'Invalid Date') {
+                document.getElementById("datetime").innerHTML = "Invalid Date";
+            } else {
+                document.getElementById("datetime").innerHTML = "";
+            }
+            if (datetime != "" && datetimelocal != "") {
+                var diff = new Date(datetime) - new Date(datetimelocal);
+                document.getElementById("datediff").innerHTML = "the datetime and datetimelocal diff:" + diff;
+            }
+            var month = document.forms["form"]["month"].value;
+            if (month == "") {
+                document.getElementById("month").innerHTML = "This feild is required";
+            } else {
+                document.getElementById("month").innerHTML = "";
+            }
+            var Week = document.forms["form"]["Week"].value;
+            if (Week == "") {
+                document.getElementById("Week").innerHTML = "This feild is required";
+            } else {
+                document.getElementById("Week").innerHTML = "";
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <form name="form" novalidate>
+        <div>
+            <label>Number Demo:</label>
+            <input type="number" name="numberField" required>
+            <span id="numberField"></span>
+        </div>
+
+        <div>
+            <label>Range Demo:</label>
+            <input type="range" min="1" max="100" step="5" value="step-value" name="rangeField" required>
+        </div>
+
+        <div>
+            <label>Color Demo:</label>
+            <input type="color" name='colorField' value="#a2fc83" required>
+        </div>
+
+        <div>
+            <label>Date Demo:</label>
+            <input type="date" name='DateField' required>
+            <span id="DateField"></span>
+        </div>
+
+        <div>
+            <label>Time Demo:</label>
+            <input type="time" name='TimeField' required>
+            <span id="TimeField"></span>
+        </div>
+
+        <div>
+            <label>DateTime Local Demo:</label>
+            <input type="datetime-local" name="datetimelocal" id="" required>
+            <span id="datetimelocal"></span>
+        </div>
+        <div>
+            <label>DateTime Demo:</label>
+            <input type="datetime" name="datetime" id="" required>
+            <span id="datetime"></span>
+            <span id="datediff"></span>
+        </div>
+        <div>
+            <label>Birth Month</label>
+            <input type="month" name="month" id="" required>
+            <span id="month"></span>
+        </div>
+        <div>
+            <label>Vacation Week </label>
+            <input type="Week" name="Week" id="" required>
+            <input type="text">
+            <button type="button" onclick="validateForm()">Go!</button>
+        </div>
+        <div>
+            <span id="Week"></span></div>
+    </form>
+</body>
+
+</html>

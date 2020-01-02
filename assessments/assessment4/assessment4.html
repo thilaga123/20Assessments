@@ -1,0 +1,85 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+  <style>
+    .container {
+      width: 75%;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    h1 {
+      color: green;
+    }
+
+    #imag {
+      width: 350px;
+      height: 220px;
+      padding: 10px;
+      border: 1px solid #aaaaaa;
+      display: inline-block;
+    }
+
+    ul {
+      display: inline-block;
+      width: "336";
+      list-style: none;
+    }
+
+    li {
+      width: 200px;
+      height: 50px;
+      background-color: green;
+      margin: 5px;
+
+    }
+  </style>
+  <script>
+    function allowDrop(ev) {
+      ev.preventDefault();
+    }
+
+    function drag(ev) {
+      ev.dataTransfer.setData("text", ev.target.id);
+    }
+
+    function drop(ev) {
+      ev.preventDefault();
+      var data = ev.dataTransfer.getData("text");
+      document.getElementById(data).remove();
+      document.getElementById("imag").src = "./dustbinfillled.png";
+
+
+    }
+  </script>
+</head>
+
+<body>
+  <div class="container">
+    <h1>HTML5 drag and drop</h1>
+    <p>Drag list of items on dist bin</p>
+    <img id="imag" src="./dustbinempty.png" ondrop="drop(event)" ondragover="allowDrop(event)">
+
+    <ul>
+      <li id="drag1" draggable="true" ondragstart="drag(event)">
+        Music
+      </li>
+      <li id="drag2" draggable="true" ondragstart="drag(event)">
+        Docs
+      </li>
+      <li id="drag3" draggable="true" ondragstart="drag(event)">
+        Video
+      </li>
+      <li id="drag4" draggable="true" ondragstart="drag(event)">
+        Images
+      </li>
+      <li id="drag5" draggable="true" ondragstart="drag(event)">
+        Others
+      </li>
+    </ul>
+  </div>
+
+</body>
+
+</html>

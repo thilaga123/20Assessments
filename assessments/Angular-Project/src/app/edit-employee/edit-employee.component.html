@@ -1,0 +1,19 @@
+<div class="container">
+  <h2>LIST OF EMPLOYEES</h2>
+  <table>
+    <tr>
+      <th>S.No</th>
+      <th>NAME</th>
+      <th>AGE</th>
+      <th>EMAIL</th>
+      <th>EDIT</th>
+    </tr>
+    <tr *ngFor="let item of employees; let i = index">
+      <td>{{i}}</td>
+      <td>{{item.name}}</td>
+      <td>{{item.age}}</td>
+      <td>{{item.email}}</td>
+      <td><a  [routerLink]="['/employees',i]" >edit</a></td>
+    </tr>
+  </table>
+</div>

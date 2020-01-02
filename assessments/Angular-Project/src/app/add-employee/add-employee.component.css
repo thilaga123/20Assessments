@@ -1,0 +1,40 @@
+.login-form{
+ width: 500px;
+ margin: 0 auto;
+}
+label{
+ display: inline-block;
+ width: 100px;
+}
+.invalid-feedback{
+ margin-top:5px;
+ margin-left: 100px;
+ color: red;
+}
+.form-group-custom{
+ padding: 10px;
+
+}
+input{
+ width: 250px;
+ border: none;
+ outline: none;
+ border-bottom: 1px solid gray;
+}
+.text-center{
+ text-align: center;
+}
+.btn-custom{
+ background-color: #03a9f4;
+ color: white;
+ border:none;
+ outline: none;
+ box-shadow: 0;
+ padding: 10px;
+ border-radius: 2px;
+ margin: 10px;
+}
+.reset{
+ background-color: #d2d4d2;
+ color: #03a9f4;
+}

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>HTML fieldset Tag</title>
+    <style>
+        form {
+            width: 60%;
+            margin: 0 auto;
+        }
+
+        fieldset {
+            margin: 10px;
+        }
+        fieldset > label{
+            display: inline-block;
+            width: 40%;
+        }
+        .width-margin {
+            margin: 20px;
+            width: 50%;
+        }
+        textarea{
+            vertical-align: middle;
+        }
+        input[type = 'radio'], input[type = 'checkbox']{
+            margin: 20px;
+        }
+        button{
+            width: 300px;
+            height: 30px;
+            display: inline-block;
+            background-color: aqua;
+            margin: 0;
+            padding: 0;
+            border: 0;
+        }
+
+    </style>
+</head>
+
+<body>
+    <form>
+        <p>Fields marked (*) are required</p>
+        <fieldset>
+            <legend>Input Text Feild Validation</legend>
+            <label> First Name *</label>
+            <input type="text" class="width-margin" placeholder="First Name">
+            <br aria-hidden="true"/>
+            <label>Last Name *</label>
+            <input type="text" class="width-margin" placeholder="Last Name">
+            <br aria-hidden="true"/>
+        </fieldset>
+        <fieldset>
+            <legend>Email and URL Validation
+            </legend>
+            <label>Email *</label>
+            <input type="email" class="width-margin" placeholder=" e.g.swapnil@example.com">
+            <br aria-hidden="true"/> 
+            <label>Website *</label>
+            <input type="url" name="websitelink" class="width-margin"  placeholder=" e.g.http://www.html5andcss3.org">
+        </fieldset>
+        <fieldset>
+            <legend>Mobile or Phone Number Validation
+            </legend>
+            <label>Mobile *</label>
+            <input type="tel" class="width-margin" placeholder="Please enter a ten digit phone number">
+            <br aria-hidden="true"/>
+        </fieldset>
+        <fieldset>
+            <legend>Drop Down Box Validation
+            </legend>
+            <label>Country</label>
+            <select class="width-margin">
+                <option value="India">India</option>
+                <option value="korea">korea</option>
+            </select>
+            <br aria-hidden="true"/>
+        </fieldset>
+
+        <fieldset>
+            <legend>Number Vaidation With Specific Range
+            </legend>
+            <label>Post code *</label>
+            <input type="text" class="width-margin">
+            <br aria-hidden="true"/>
+        </fieldset>
+        <fieldset>
+            <legend>Textarea Validation
+            </legend>
+            <label>Address *</label>
+            <textarea class="width-margin"></textarea>
+            <br aria-hidden="true"/>
+        </fieldset>
+        <fieldset>
+            <legend>CheckBox and Radio Button Validation
+            </legend>
+            <label>Agree to T &AMP; C *</label>
+            <input type="checkbox">
+            <br aria-hidden="true"/> 
+            <label>General *</label>
+            <input type="radio">Male
+            <input type="radio">Female
+            <br aria-hidden="true"/>
+        </fieldset>
+        <fieldset>
+            <legend>Password Validation Using Pattern
+            </legend>
+            <label>Password *</label>
+            <input type="password" class="width-margin">
+            <br aria-hidden="true"/>
+        </fieldset>
+        <div style="text-align: right">
+                <button>Sign up</button>
+        </div>
+
+
+
+    </form>
+</body>
+
+</html>

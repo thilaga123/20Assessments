@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+ <meta charset="utf-8">
+ <meta name="viewport" content="width=device-width">
+ <title>assessment10</title>
+ <style>
+  #setBG {
+   width: 300px;
+   height: 300px;
+   border: 1px solid black;
+  }
+ </style>
+ <script>
+  $(document).ready(function () {
+   //1: Detect a textbox's content has changed
+   $('#name1').on('input', function () {
+    $("#Name").html("first name changed!!!");
+   });
+   $('#name2').on('input', function () {
+    $("#Name").html("last name changed!!!");
+   });
+
+
+   //2: change button text using jquery
+   $('#changebtn').on('click', function () {
+    $('#changebtn').attr('value','jquery button changed');
+   });
+
+   //3: add new options
+   $("#addOption").click(function () {
+    var myOptions = {
+     val1: 'Pakistan',
+     val2: 'afghanistan ',
+     val3: 'bangladesh'
+    };
+    var mySelect = $('#team');
+    $.each(myOptions, function (val, text) {
+     mySelect.append(
+      $('<option></option>').val(val).html(text)
+     );
+    });
+   });
+
+//4:change background
+   $("#setBGBtn").click(function () {
+    var imageUrl = 'https://images.pexels.com/photos/949587/pexels-photo-949587.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500';
+    $('#setBG').css('background-image', 'url(' + imageUrl + ')');
+   });
+
+  });
+
+
+ </script>
+</head>
+
+<body>
+ <h2>1: Detect a textbox's content has changed</h2>
+ <form onsubmit="event.preventDefault()">
+  First name: <input type="text" id="name1" name="fname"><br> Last name: <input type="text" id="name2" name="lname"><br>
+  <p id="Name"></p>
+ </form>
+
+ <h2>2: change button text using jquery</h2>
+ <input type="button" id="changebtn" value="change name">
+
+ <h2>3: add 3 new drop-down list</h2>
+ <p>country :</p>
+ <select id='team'>
+  <option value="India">India</option>
+  <option value="New Zealand">New Zealand</option>
+  <option value="Australia">Australia</option>
+  <option value="West Indies">West Indies</option>
+ </select>
+ <button id='addOption'> add 3 new options</button>
+
+ <h2>4: set background image</h2>
+ <button id="setBGBtn">click to add background img to below div</button>
+ <div id="setBG">
+  <h2>click the above button to change my background</h2>
+ </div>
+</body>
+
+</html>

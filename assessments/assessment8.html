@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+ <title>assignment 8</title>
+ <style>
+  .space {
+   padding: 10px;
+  }
+
+  .label {
+   display: inline-block;
+   width: 100px;
+  }
+ </style>
+ <script>
+  var count = 0;
+  // 1: display current date in a specific format
+  function getDate() {
+   if (count == 0) {
+    var today = new Date();
+    var day = today.getDay();
+    var daylist = [
+     "Sunday",
+     "Monday",
+     "Tuesday",
+     "Wednesday ",
+     "Thursday",
+     "Friday",
+     "Saturday"
+    ];
+    document.getElementById("today").innerHTML =
+     document.getElementById("today").innerHTML + daylist[day] + ".";
+    // console.log("Today is : " + daylist[day] + ".");
+    var hour = today.getHours();
+    var minute = today.getMinutes();
+    var second = today.getSeconds();
+    var midday = hour >= 12 ? " PM " : " AM ";
+    hour = hour >= 12 ? hour - 12 : hour;
+    if (hour === 0 && midday === " PM ") {
+     if (minute === 0 && second === 0) {
+      hour = 12;
+      midday = " Noon";
+     } else {
+      hour = 12;
+      midday = " PM";
+     }
+    }
+    if (hour === 0 && midday === " AM ") {
+     if (minute === 0 && second === 0) {
+      hour = 12;
+      midday = " Midnight";
+     } else {
+      hour = 12;
+      midday = " AM";
+     }
+    }
+    document.getElementById("time").innerHTML =
+     document.getElementById("time").innerHTML +
+     hour +
+     midday +
+     " : " +
+     minute +
+     " : " +
+     second;
+    count++;
+   }
+  }
+  //print the page
+  function printPage() {
+   window.print();
+  }
+
+  //display date in various format
+  function dateFormat() {
+   var today = new Date();
+   var dd = today.getDate();
+
+   var mm = today.getMonth() + 1;
+   var yyyy = today.getFullYear();
+   if (dd < 10) {
+    dd = "0" + dd;
+   }
+
+   if (mm < 10) {
+    mm = "0" + mm;
+   }
+   var dateDiv;
+   today = mm + "-" + dd + "-" + yyyy;
+   dateDiv = "<p>" + today + "</p>";
+   today = mm + "/" + dd + "/" + yyyy;
+   dateDiv = dateDiv + "<p>" + today + "</p>";
+   today = dd + "-" + mm + "-" + yyyy;
+   dateDiv = dateDiv + "<p>" + today + "</p>";
+   today = dd + "/" + mm + "/" + yyyy;
+   dateDiv = dateDiv + "<p>" + today + "</p>";
+   document.getElementById("displayDateFormat").innerHTML = dateDiv;
+  }
+  //guess the number
+  function generate() {
+   const number = Math.ceil(Math.random() * 10);
+   var data = window.prompt();
+   if (data > 0 && data <= 10) {
+    if (number == data)
+     document.getElementById("luck").innerHTML = "Good Work";
+    else document.getElementById("luck").innerHTML = "Not matched";
+    document.getElementById("generateNumber").innerHTML =
+     "generated number:" + number;
+   }
+  }
+  //calculator
+
+  function multiply() {
+   var first = document.forms["calc"]["fnumber"].value;
+   var second = document.forms["calc"]["snumber"].value;
+   document.getElementById("calcResult").innerHTML = first * second;
+  }
+  function divide() {
+   var first = document.forms["calc"]["fnumber"].value;
+   var second = document.forms["calc"]["snumber"].value;
+   document.getElementById("calcResult").innerHTML = first / second;
+  }
+  //print URL
+  function printURL() {
+   console.log("URL of this page :", document.URL);
+  }
+  //capitalise
+  function capitalise() {
+   var str = document.getElementById("EnterText").value;
+   str = str.split(" ");
+
+   for (let i = 0, x = str.length; i < x; i++) {
+    str[i] = str[i][0].toUpperCase() + str[i].substr(1);
+   }
+
+   document.getElementById("capitalisedText").innerHTML = str.join(" ");
+  }
+  //check string equal no of P and T
+  function checkword() {
+   var str = document.getElementById("enteredWord").value;
+
+   var WithoutP = str.replace(/[^p]/g, "");
+
+   var WithoutT = str.replace(/[^t]/g, "");
+
+   var countP = WithoutP.length;
+   var countT = WithoutT.length;
+
+   document.getElementById("resultPS").innerHTML = (countP === countT);
+
+  }
+
+  //copy last 3 char and paste 4 times
+  function fourCopy()
+{
+ var str= document.getElementById('copyString').value;
+  if (str.length >= 3) {
+    lastChar = str.substring(str.length - 3);
+    document.getElementById("pasteString").innerHTML = lastChar + lastChar + lastChar + lastChar;
+  }
+  else
+  document.getElementById("pasteString").innerHTML = "Enter more than 3 character";
+}
+
+//array swap
+function generateArray(){
+ var arrayLen = document.getElementById('arrayLength').value;
+ var parent = document.getElementById('arrayBox');
+ for(let i=0 ; i<arrayLen;i++){
+  var child = document.createElement("input");
+var id = document.createAttribute("id");       
+id.value =  "array"+i;                         
+child.setAttributeNode(id); 
+var type = document.createAttribute("type");       
+type.value =  "text";                         
+child.setAttributeNode(type);
+var placeholder = document.createAttribute("placeholder");       
+placeholder.value =  "Enter array element"+i;                         
+child.setAttributeNode(placeholder);
+ parent.appendChild(child);
+ }
+}
+function swapArray(){
+ var arrayLen = document.getElementById('arrayLength').value;
+ var array = [];
+ var temp;
+ for(let i=0 ; i<arrayLen;i++){
+  var id = "array"+i;
+ array[i]= document.getElementById(id).value;
+ }
+ temp = array;
+ document.getElementById('enteredArray').innerHTML = temp.join("  ");
+ var firstValue = array[0];
+ var lastValue = array[arrayLen-1];
+ array[0] = lastValue;
+ array[arrayLen-1] = firstValue;
+ document.getElementById('swapedArray').innerHTML = array.join("  ");
+
+ }
+ //reverse a number
+ function reverse(){
+ var num = document.getElementById('reverseNo').value;
+ num = num.toString();
+ document.getElementById('reverseResult').innerHTML = num.split("").reverse().join("");
+ }
+ //sort a string
+ function sort(){
+ var str = document.getElementById('sortString').value;
+ document.getElementById('sortResult').innerHTML = str.split("").sort().join("");
+ }
+
+  //sort a string
+  function long(){
+ var str = document.getElementById('longString').value;
+ str = str.split(" ");
+ var result = '';
+ for(var i = 0 ; i < str.length ; i++)
+  {
+    if(result.length < str[i].length)
+    {
+    result = str[i];
+    } 
+  }
+ document.getElementById('longResult').innerHTML = result;
+ }
+
+ //unique char
+ function unique()
+{
+ var str = document.getElementById('uniqueString').value;
+ var uniql="";
+ for (var i=0;i < str.length;i++)
+ {
+
+ if(uniql.indexOf(str.charAt(i))==-1)
+  {
+  uniql += str[i];  
+  
+   }
+  }
+  document.getElementById('uniqueResult').innerHTML = uniql;  
+} 
+
+//character count
+function charCount(str1) {
+ var str = document.getElementById('countString').value;
+var uchars = {};
+str.replace(/\S/g, function(l){uchars[l] = (isNaN(uchars[l]) ? 1 : uchars[l] + 1);});
+document.getElementById('countResult').innerHTML= JSON.stringify(uchars);
+}
+
+
+//generate random id
+function randomId()
+{
+ var num = document.getElementById('randomNum').value;
+var text = "";
+var char_list = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+for(var i=0; i < num; i++ )
+{  
+text += char_list.charAt(Math.floor(Math.random() * char_list.length));
+}
+document.getElementById('randomResult').innerHTML = text;
+}
+
+//longest substring without repeating characters
+function remove(input) {
+ var input = document.getElementById("removeString").value;
+var chars = input.split('');
+var newChar;
+var str = "";
+var longText = "";
+var val = {};
+for (var i = 0; i < chars.length; i++) {
+newChar = chars[i];
+if (!val[chars[i]]) 
+{ 
+str += newChar; 
+val[chars[i]] = {index:i};
+}
+else 
+{
+if(longText.length <= str.length)
+{
+longText = str;
+}
+var duplicateIndex = val[newChar].index;
+var duplicateStr = input.substring(duplicateIndex + 1, i);
+str = duplicateStr + newChar;
+val = {};
+for (var j = duplicateIndex + 1; j <= i; j++) {
+val[input.charAt(j)] = {index:j};
+}
+}
+}
+document.getElementById('removeResult').innerHTML = longText.length > str.length ? longText : str;
+}
+ </script>
+</head>
+
+<body>
+ <div class="container">
+  <!-- 1: display current date in a specific format -->
+  <h2>1: display current date in a specific format</h2>
+  <button onclick="getDate()">click the get date</button>
+  <p id="today">Today is :</p>
+  <p id="time">Current Time :</p>
+  <h2>2.Print the contents of the current window</h2>
+  <p>Click the button to print the current page.</p>
+  <button onclick="printPage()">Print this page</button>
+
+  <h2>
+   3.get the current date. Expected Output:mm-dd-yyyy, mm/dd/yyyy or dd-mm-yyyy, dd/mm/yyyy
+  </h2>
+  <p>Click the button to display current date in various format.</p>
+  <button onclick="dateFormat()">display date</button>
+  <div id="displayDateFormat"></div>
+
+  <h2>4.Guess the number</h2>
+  <p>Enter a number between 1 to 10</p>
+  <button onclick="generate()">Click to enter</button>
+  <p id="generateNumber"></p>
+  <p id="luck"></p>
+
+  <h2>
+   5.Write a JavaScript program to calculate multiplication and division of two numbers
+  </h2>
+
+  <form name="calc" onsubmit="event.preventDefault()">
+   <div class="space">
+    <label class="label">1st Number:</label>
+    <input type="number" name="fnumber" />
+   </div>
+   <div class="space">
+    <label class="label">2nd Number:</label>
+    <input type="number" name="snumber" />
+   </div>
+   <div class="space">
+    <button onclick="multiply()">multiply</button>
+    <button onclick="divide()">divide</button>
+   </div>
+  </form>
+  <p>The Result is : <span id="calcResult"></span></p>
+
+  <h2>6.Print loading page URL in Console</h2>
+  <button onclick="printURL()">click to display URL</button>
+
+  <h2>7.Capitalise First letter of each word(see result onblur)</h2>
+  <input type="text" id="EnterText" placeholder="Enter the sentence to be capitalise" onblur="capitalise()" />
+  <p id="capitalisedText"></p>
+
+  <h2>8.check if a given string contains equal number of p's and s's present.(see result onblur)</h2>
+  <label>Input</label><input type="text" id="enteredWord" placeholder="Enter the word" onblur="checkword()" />
+  <p> Output:<span id="resultPS"></span></p>
+
+  
+  <h2>9.create a new string of 4 copies of the last 3 characters of a given original stringt.(see result onblur)</h2>
+  <label>Input</label><input type="text" id="copyString" placeholder="Enter the word" onblur="fourCopy()" />
+  <p> Output:<span id="pasteString"></span></p>
+
+  <h2>10.swap the first and last elements of a given array of integers.</h2>
+  <label>Enter the Array length</label>
+  <input type ="number" id= "arrayLength" onblur="generateArray()" />
+  <div id="arrayBox"></div>
+  <button onclick="swapArray()">swap values</button>
+  <p>Entered values <span id="enteredArray"></span></p>
+  <p>swaped values <span id="swapedArray"></span></p>
+
+  <h2>11.reverse a number.(see result onblur)</h2>
+  input: <input type="number" id="reverseNo" onblur="reverse()">
+  <p>output: <span id="reverseResult"></span></p>
+
+  <h2>12.sort string in aphabetical order.(see result onblur)</h2>
+  input: <input type="text" id="sortString" onblur="sort()">
+  <p>output: <span id="sortResult"></span></p>
+
+  <h2>13.find longest word in a sentence.(see result onblur)</h2>
+  input: <input type="text" id="longString" onblur="long()">
+  <p>output: <span id="longResult"></span></p>
+
+
+  <h2>unique character</h2>
+  input: <input type="text" id="uniqueString" onblur="unique()">
+  <p>output: <span id="uniqueResult"></span></p>
+
+
+  <h2>count character</h2>
+  input: <input type="text" id="countString" onblur="charCount()">
+  <p>output: <span id="countResult"></span></p>
+
+
+  <h2>14.Generates a string id (specified length) of random characters.</h2>
+  input: <input type="number" id="randomNum" onblur="randomId()" placeholder="enter the length of the ID">
+  <p>output: <span id="randomResult"></span></p>
+
+  <h2>15.Find longest substring in a given a string without repeating characters.</h2>
+  input: <input type="text" id="removeString" onblur="remove()">
+  <p>output: <span id="removeResult"></span></p>
+  
+ </div>
+</body>
+
+</html>
